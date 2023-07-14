@@ -43,4 +43,6 @@ app.post('/create', async (req, res) => {
   });
 });
 
-app.listen(8080);
+const port = process.env.PORT;
+console.log(`====================== Port : ${port}`)
+app.listen(port);
