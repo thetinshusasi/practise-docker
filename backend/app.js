@@ -14,7 +14,7 @@ const accessLogStream = fs.createWriteStream(
   path.join(__dirname, 'logs', 'access.log'),
   { flags: 'a' }
 );
-console.log("hi========")
+console.log("hi= hh=======")
 
 app.use(morgan('combined', { stream: accessLogStream }));
 

@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  backend:
+    ports:
+      - "8080:8080"
+    volumes:
+      - logs:/app/logs
+      - "./backend:/app"
+      - /app/node_modules
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+  frontend:
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - backend
+  mongodb:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    # environment:
+
+volumes:
+  data:
+  logs:
